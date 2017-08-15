@@ -74,18 +74,9 @@ BEGIN{
             -h/--help
         };
 
-}   
-#use Getopt::Long;
+}
 use Cwd;
 
-# our($s_subject_id) = (undef);
-# &GetOptions('subject|i=s' => \$s_subject_id );
-
-# if(!defined $s_subject_id){
-#     $s_subject_id = getSubID();
-# }
-
-# my $s_out_file = $s_subject_id.".txt";
 
 my %h_seqs;
 my $s_header;
@@ -95,12 +86,10 @@ while (<>) {
     if ($_ =~ />/) {
         if ($s_seq) {    
             $h_seqs{$s_header} = $s_seq;
-        }              
-        # $s_header = $_;
-        # $s_header =~ s/^>//; # remove ">"
-        # $s_header =~ s/\s+$//; # remove trailing whitespace
-        my($n,$id,$loc,@x) = split(/\|/,$_);
-        $s_header = join(",",$id,$loc);
+        }
+        my($n,$id,$loc,$s_filename,@x) = split(/\|/,$_);
+        my $id_rand = int(rand(10000));
+        $s_header = join(",",$id_rand,$id,$loc,$s_filename);
         $s_seq = ""; # clear out old sequence
     }else {    
         s/\s+//g; # remove whitespace
@@ -113,7 +102,7 @@ if ($s_seq) { # handle last sequence
 }
 
 foreach my $s_typing_id (keys %h_seqs){
-    my($id,$s_locus) = split(/,/,$s_typing_id);
+    my($id_rand,$id,$s_locus,$s_filename) = split(/,/,$s_typing_id);
     #$s_typing =~ /(HLA-\D{1,3}\d{0,1})(\*|\|)/;
     next if(!defined $s_locus || $s_locus !~ /\S/);
     my $o_gfe = GFE->new();
@@ -122,45 +111,10 @@ foreach my $s_typing_id (keys %h_seqs){
     my $s_gfe  = defined $$rh_gfe{gfe} ? $$rh_gfe{gfe} : '';
     next if !defined $s_gfe || $s_gfe !~ /\S/;
     my $n_seq  = length($h_seqs{$s_typing_id});
-    print join(",",$id,$s_typing_id,$s_locus,$s_gfe,$n_seq),"\n";
+    my $f_aligned = $$rh_gfe{aligned};
+    my $gfe_version = $$rh_gfe{version};
+    print join(",",$s_typing_id,$s_gfe,$n_seq,$f_aligned,$gfe_version),"\n";
 }
 
-
-sub getSubID{
-    my $id = int(rand(10000));
-    my $s_out_file = $id.".txt";
-    if(!-e $s_out_file){
-        return $id;
-    }else{
-        return getSubID();
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 
 
