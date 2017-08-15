@@ -342,7 +342,7 @@ sub align{
   my $s_fasta_file = $self->fasta;
   my $s_loc = $s_locus !~ /HLA-/ && $s_locus !~ /KIR/ ? "HLA-".$s_locus : $s_locus;
   my $s_hap1_cmd = "java -jar ".$self->directory."/hap1.2.jar";
-  my @args = ($s_hap1_cmd, " -g ".$self->order->{$s_loc}, " -i $s_fasta_file"," -o ".$self->directory."/GFE/parsed-local/");
+  my @args = ($s_hap1_cmd, " -g ".$self->order->{$s_loc}, " -i $s_fasta_file"," -o ".$self->directory."/GFE/parsed-local/"," > /dev/null");
 
   my $exit_value = system(join("",@args));
 
