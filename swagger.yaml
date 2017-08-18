@@ -352,6 +352,8 @@ definitions:
         items:
           type: string
         type: array
+      version:
+        type: string
       structure:
         items:
           $ref: '#/definitions/Structure'
