@@ -588,7 +588,7 @@ swagger_definition 'Typing' => {
         },
         log       => { type => 'array',
            items  => { type => 'string' }
-        }
+        },
     },
     example => {
         gfe     => 'HLA-Aw1-1-7-20-10-32-7-1-1-1-6-1-5-3-5-1-1',

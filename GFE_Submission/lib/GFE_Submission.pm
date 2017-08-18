@@ -65,7 +65,7 @@ use GFE;
 
 my $o_gfe = GFE->new();
 
-our $VERSION = '1.0.7';
+our $VERSION = '1.0.8';
 
 prefix undef;
 
