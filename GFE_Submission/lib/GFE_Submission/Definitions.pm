@@ -576,8 +576,9 @@ swagger_definition 'TypingData' => {
 =cut
 swagger_definition 'Typing' => {
     type => 'object',
-    required   => [ 'gfe' ],
+    required   => [ 'gfe'],
     properties => {
+        version => { type => 'string' },
         gfe       => { type => 'string' },
         imgthla   => { type => 'string' },
         aligned   => { type => 'number' },
@@ -587,7 +588,7 @@ swagger_definition 'Typing' => {
         },
         log       => { type => 'array',
            items  => { type => 'string' }
-        },
+        }
     },
     example => {
         gfe     => 'HLA-Aw1-1-7-20-10-32-7-1-1-1-6-1-5-3-5-1-1',
@@ -611,6 +612,7 @@ swagger_definition 'Typing' => {
         ]
     }
 };
+
 
 
 =head2 Error
