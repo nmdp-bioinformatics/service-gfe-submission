@@ -745,8 +745,8 @@ sub getSequence{
         }
         
         my ($s_term, $n_rank) = split /:/, $term_rank;
-        my $n_accession = $a_gfe[$_];$n_accession =~ s/\D+w//;
-        if(!defined $n_accession || $n_accession !~ /\S/ || $n_accession == 0){
+        my $n_accession = $a_gfe[$_];$n_accession =~ s/\D+\d{0,1}w//;
+        if(!defined $n_accession || $n_accession !~ /\S/){
             $logger->warn("Accession is not defined       - GFE:         $s_gfe");
             next;
         }
