@@ -491,7 +491,7 @@ around BUILDARGS=>sub
     if(!-d $working);
 
   my %h_ids = ( 0 => 1 );
-  $args->{aligned_cutoff} = .70;
+  $args->{aligned_cutoff} = .30;
   $args->{hmlnf}          = $s_hml_flow;
   $args->{fastanf}        = $s_fasta_flow;
   $args->{outdir}         = $outdir;
