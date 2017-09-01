@@ -54,7 +54,7 @@ foreach my $per (.75,.95,1){
 }
 
 #checkAlignedPercent invalid
-foreach my $per (0,.25,.5){
+foreach my $per (0,.25,.15){
     my $o_gfe_p  = GFE->new();
     $o_gfe_p->startLogfile();
     my $rh_percent_status = $o_gfe_p->checkAlignedPercent($per,"HLA-A");
