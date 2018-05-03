@@ -1,4 +1,7 @@
 # service-gfe-submission
+***************************************************************
+**This repository is now obsolete. All functionality is now available in the [pyGFE](https://github.com/nmdp-bioinformatics/pyGFE) Github repository.**
+***************************************************************
 
 RESTful API for getting GFE results from raw sequence data
 
